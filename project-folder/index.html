@@ -1,191 +1,244 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Charity Donation</title>
 
-    <!-- Bootstrap CSS (CDN) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
   </head>
+
   <body>
+
     <main class="container py-5">
-      <h1 class="mb-3">Welcome to the "making improvised kids getting fit" charity </h1>
+
+      <h1 class="mb-3">Welcome to the "making improvised kids getting fit" charity</h1>
       <p class="lead">Our goal is to provide sufficent nutrients for kids in these chairty to be healthy and fit</p>
 
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Charity Shop</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Checkout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <!-- SHOPPING CART -->
+      <div class="container mb-5">
+        <h3>Your Cart</h3>
+        <ul id="cart-list" class="list-group mb-3"></ul>
+        <p class="fw-bold">Total: €<span id="cart-total">0</span></p>
+        <button id="checkout-btn" class="btn btn-success">Proceed to Checkout</button>
+      </div>
 
+      <!-- PRODUCT GALLERY -->
+      <div class="container my-5">
+        <h2 class="text-center mb-4">Our Charitable Items</h2>
 
-<div class="container my-5">
-  <h2 class="text-center mb-4">Our Charitable Items</h2>
+        <div class="row g-4">
 
-  <div class="row g-4">
-    
-    <!-- PRODUCT CARD 1 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item1.jpg" class="card-img-top" alt="Item 1">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€10</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
+          <!-- PRODUCT CARD 1 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/71f+UBXh2vL._AC_UF1000,1000_QL80_.jpg" class="card-img-top" alt="whey protein">
+              <div class="card-body">
+                <h5 class="card-title">Whey protein</h5>
+                <p class="card-text">high quality whey protein 25grams of protein per scoop.</p>
+                <p class="fw-bold">€10</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 2 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/61CDLd-rFwL.jpg" class="card-img-top" alt="dumbells">
+              <div class="card-body">
+                <h5 class="card-title">dumbells</h5>
+                <p class="card-text"> 5 kg functional dumbells with strong grip.</p>
+                <p class="fw-bold">€15</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 3 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/394708-20250213175015.webp" class="card-img-top" alt="Panner">
+              <div class="card-body">
+                <h5 class="card-title">Panner</h5>
+                <p class="card-text">High quality amul panner for protein .</p>
+                <p class="fw-bold">€12 per kg</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 4 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/71Gj4j0N-NL._AC_SL1500_.jpg" class="card-img-top" alt="bench">
+              <div class="card-body">
+                <h5 class="card-title">Function bench </h5>
+                <p class="card-text">Multi-purpose bench for gym , durable and adjustable</p>
+                <p class="fw-bold">€100</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 5 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/Avocado-fruits.jpg.webp" class="card-img-top" alt="Avacado">
+              <div class="card-body">
+                <h5 class="card-title">Avacados</h5>
+                <p class="card-text">Fresh Avacados imported from Mexico</p>
+                <p class="fw-bold">€10 per kg</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 6 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/barbell-1500-250_d7bbdbff-ddc0-47d5-a86d-99a56dea4603.jpg" class="card-img-top" alt="barbell">
+              <div class="card-body">
+                <h5 class="card-title">Barbell with plates set</h5>
+                <p class="card-text">20kg barbell with weights (5, 7.5, 10, 15, 2.5 kg).</p>
+                <p class="fw-bold">€150</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 7 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/images.jpeg" class="card-img-top" alt="milk">
+              <div class="card-body">
+                <h5 class="card-title">Amul Milk </h5>
+                <p class="card-text">Fresh Indian amul high protein milk </p>
+                <p class="fw-bold">€5 per lt </p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 8 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/Optimum-Nutrition-Micronized-Creatine-Powder-Unflavored-60-Servings_6bd5b9d0-57bd-4bac-ab06-400acf374a96.c393538a390c70ad501df530f42ba2e1.png.webp" class="card-img-top" alt="creatine">
+              <div class="card-body">
+                <h5 class="card-title">Creatine Monohydrate</h5>
+                <p class="card-text">100% pure creatine monohydrate from optimum nutriotion</p>
+                <p class="fw-bold">€15 per 300grams</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 9 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/parboiled-basmati-rice.jpeg" class="card-img-top" alt="rice">
+              <div class="card-body">
+                <h5 class="card-title">basmati rice </h5>
+                <p class="card-text">Indian Basmati soft rice .</p>
+                <p class="fw-bold">€7 per kg</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 10 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/sport-collection-skipping-rope___230818.jpg.webp" class="card-img-top" alt="rope">
+              <div class="card-body">
+                <h5 class="card-title">skipping rope </h5>
+                <p class="card-text">functional elastic skipping rope.</p>
+                <p class="fw-bold">€8</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 11 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/76100690_o.jpg" class="card-img-top" alt="straps">
+              <div class="card-body">
+                <h5 class="card-title">straps </h5>
+                <p class="card-text">fucntional weight lifting straps .</p>
+                <p class="fw-bold">€10</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT CARD 12 -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+              <img src="images/WMP-top-bar-2019-rich_700x700.jpg.webp" class="card-img-top" alt="pull up bar">
+              <div class="card-body">
+                <h5 class="card-title">pull up bar </h5>
+                <p class="card-text">convienent pull up bar </p>
+                <p class="fw-bold">€50</p>
+                <button class="btn btn-primary add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
 
-    <!-- PRODUCT CARD 2 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item2.jpg" class="card-img-top" alt="Item 2">
-        <div class="card-body">
-          <h5 class="card-title">Second Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€15</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
+      <!-- CHECKOUT FORM -->
+      <div id="checkout-form" class="container d-none my-5">
+        <h3>Checkout Information</h3>
+
+        <form>
+          <div class="mb-3"><label class="form-label">Full Name</label><input type="text" id="buyer-name" class="form-control"></div>
+          <div class="mb-3"><label class="form-label">Email</label><input type="email" id="buyer-email" class="form-control"></div>
+          <div class="mb-3"><label class="form-label">Phone Number</label><input type="text" id="buyer-phone" class="form-control"></div>
+          <div class="mb-3"><label class="form-label">Address</label><input type="text" id="buyer-address" class="form-control"></div>
+          <div class="mb-3"><label class="form-label">ZIP Code</label><input type="text" id="buyer-zip" class="form-control"></div>
+          <button type="submit" id="submit-order" class="btn btn-primary">Submit Order</button>
+        </form>
       </div>
-    </div>
 
-    <!-- PRODUCT CARD 3 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item3.jpg" class="card-img-top" alt="Item 3">
-        <div class="card-body">
-          <h5 class="card-title">Third Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€12</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
+      <!-- CONFIRMATION -->
+      <div id="confirmation" class="container d-none my-5">
+        <h3>Order Confirmation</h3>
+        <p>Thank you for your donation! Here is your order summary:</p>
+
+        <div id="confirmation-details"></div>
       </div>
-    </div>
-
-      <!-- PRODUCT CARD 4 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item1.jpg" class="card-img-top" alt="Item 1">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€10</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT CARD 5 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item2.jpg" class="card-img-top" alt="Item 2">
-        <div class="card-body">
-          <h5 class="card-title">Second Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€15</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT CARD 6 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item3.jpg" class="card-img-top" alt="Item 3">
-        <div class="card-body">
-          <h5 class="card-title">Third Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€12</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-      <!-- PRODUCT CARD 7 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item1.jpg" class="card-img-top" alt="Item 1">
-        <div class="card-body">
-          <h5 class="card-title">Item Name</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€10</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT CARD 8 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item2.jpg" class="card-img-top" alt="Item 2">
-        <div class="card-body">
-          <h5 class="card-title">Second Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€15</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT CARD 9 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item3.jpg" class="card-img-top" alt="Item 3">
-        <div class="card-body">
-          <h5 class="card-title">Third Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€12</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT CARD 10 -->
-    <div class="col-12 col-sm-6 col-md-4">
-      <div class="card h-100">
-        <img src="img/item3.jpg" class="card-img-top" alt="Item 3">
-        <div class="card-body">
-          <h5 class="card-title">Third Item</h5>
-          <p class="card-text">Short description of the item.</p>
-          <p class="fw-bold">€12</p>
-          <button class="btn btn-primary add-to-cart">Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Repeat this column for all remaining products -->
-    
-  </div>
-</div>
-
 
     </main>
 
-    <!-- Use the bundle (includes Popper). Do NOT include separate Popper + Bootstrap if using bundle. -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+      <p class="mb-0">© 2025 Charity Donation — Helping Kids Get Fit</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
   </body>
 </html>
