@@ -1,16 +1,15 @@
-// -------------------- CART DATA --------------------
-let cart = []; // items: { name, price, qty }
 
-// -------------------- ADD TO CART --------------------
+let cart = []; 
+
 function addToCart(name, price) {
-  if (!name || isNaN(price)) return; // ignore invalid
+  if (!name || isNaN(price)) return; 
   let item = cart.find(p => p.name === name);
   if (item) item.qty++;
   else cart.push({ name, price: Number(price), qty: 1 });
   updateCartDisplay();
 }
 
-// -------------------- UPDATE CART ON SCREEN --------------------
+
 function updateCartDisplay() {
   const cartList = document.getElementById("cart-list");
   const cartTotal = document.getElementById("cart-total");
@@ -32,7 +31,6 @@ function updateCartDisplay() {
   cartTotal.innerText = subtotal.toFixed(2);
 }
 
-// -------------------- SHOW CHECKOUT FORM --------------------
 function goToCheckout() {
   const prod = document.getElementById("products-section");
   const form = document.getElementById("checkout-form");
@@ -41,7 +39,7 @@ function goToCheckout() {
   window.scrollTo(0, 0);
 }
 
-// -------------------- SUBMIT ORDER --------------------
+
 function submitOrder(event) {
   event.preventDefault();
   const name = document.getElementById("buyer-name")?.value.trim() || "";
@@ -80,14 +78,14 @@ function submitOrder(event) {
     <p>Tax (5%): €${tax.toFixed(2)}</p>
     <h4>Total: €${total.toFixed(2)}</h4>
   `;
-  // clear cart after order
+
   cart = [];
   updateCartDisplay();
 }
 
-// -------------------- CONNECT BUTTONS TO JS --------------------
+
 document.addEventListener("DOMContentLoaded", () => {
-  // handle add-to-cart buttons; allow fallback to DOM if data attributes missing
+
   document.querySelectorAll(".add-to-cart").forEach(btn => {
     btn.addEventListener("click", () => {
       let name = btn.dataset.name;
@@ -113,6 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("checkout-btn")?.addEventListener("click", goToCheckout);
   document.getElementById("order-form")?.addEventListener("submit", submitOrder);
 
-  // initial render
+
   updateCartDisplay();
 });
