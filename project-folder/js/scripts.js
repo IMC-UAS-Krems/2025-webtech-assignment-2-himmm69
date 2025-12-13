@@ -1,15 +1,67 @@
+let cart = []; // items dict
+// show a bootstrap toast with message and optional icon
+function showToast(message, icon = "✅") {
+  const toastEl = document.getElementById("live-toast");
+  if (!toastEl) {
+    console.warn("showToast: #live-toast not found");
+    return;
+  }
 
-let cart = []; 
+  // ensure inner placeholders exist
+  let msgEl = toastEl.querySelector("#toast-message");
+  let iconEl = toastEl.querySelector("#toast-icon");
+  if (!msgEl) {
+    msgEl = document.createElement("span");
+    msgEl.id = "toast-message";
+    toastEl.querySelector(".toast-body")?.appendChild(msgEl);
+  }
+  if (!iconEl) {
+    iconEl = document.createElement("span");
+    iconEl.id = "toast-icon";
+    toastEl.querySelector(".toast-body")?.insertBefore(iconEl, msgEl);
+  }
+  iconEl.textContent = icon;
+  msgEl.textContent = message;
 
+  // use getOrCreateInstance for stability and show
+  const toast = bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000, autohide: true });
+  console.log("showToast:", message);
+  toast.show();
+}
+
+// check discount eligibility and show one-time toast (delayed slightly so it doesn't clash)
+let _discountTimeout = null;
+function checkAndShowDiscountToast() {
+  const itemCount = cart.reduce((s, it) => s + it.qty, 0);
+  console.log("checkAndShowDiscountToast: itemCount=", itemCount, "discountNotified=", discountNotified);
+
+  if (itemCount >= 3 && !discountNotified) {
+    discountNotified = true; // mark immediately so we don't schedule multiples
+    // small delay so the "added to cart" toast can appear first
+    if (_discountTimeout) clearTimeout(_discountTimeout);
+    _discountTimeout = setTimeout(() => {
+      showToast("🎉 Yay — you're eligible for a 10% discount now!", "🎉");
+      _discountTimeout = null;
+    }, 350);
+  } else if (itemCount < 3 && discountNotified) {
+    // allow future notification if user removes items below threshold
+    discountNotified = false;
+    if (_discountTimeout) { clearTimeout(_discountTimeout); _discountTimeout = null; }
+  }
+}
+
+// add product to cart
 function addToCart(name, price) {
-  if (!name || isNaN(price)) return; 
+  if (!name || isNaN(price)) return;
   let item = cart.find(p => p.name === name);
   if (item) item.qty++;
   else cart.push({ name, price: Number(price), qty: 1 });
   updateCartDisplay();
+  showToast(`${name} (x${cart.find(p => p.name === name).qty}) added to cart`, "🛒");
+  checkAndShowDiscountToast();
 }
 
-
+// update cart UI
 function updateCartDisplay() {
   const cartList = document.getElementById("cart-list");
   const cartTotal = document.getElementById("cart-total");
@@ -18,6 +70,8 @@ function updateCartDisplay() {
   if (cart.length === 0) {
     cartList.innerHTML = "<li class='list-group-item'>Your cart is empty.</li>";
     cartTotal.innerText = "0.00";
+    // reset discount notification when cart empty
+    discountNotified = false;
     return;
   }
   let subtotal = 0;
@@ -29,6 +83,9 @@ function updateCartDisplay() {
     cartList.appendChild(li);
   });
   cartTotal.innerText = subtotal.toFixed(2);
+
+  // check discount eligibility each time cart updates
+  checkAndShowDiscountToast();
 }
 
 function goToCheckout() {
@@ -39,15 +96,28 @@ function goToCheckout() {
   window.scrollTo(0, 0);
 }
 
-
 function submitOrder(event) {
   event.preventDefault();
   const name = document.getElementById("buyer-name")?.value.trim() || "";
   const email = document.getElementById("buyer-email")?.value.trim() || "";
   const phone = document.getElementById("buyer-phone")?.value.trim() || "";
   const address = document.getElementById("buyer-address")?.value.trim() || "";
+  const zip = document.getElementById("buyer-zip")?.value.trim() || "";
+
   if (!name || !email || !phone || !address) {
     alert("Please fill out all required fields.");
+    return;
+  }
+
+  // normalize phone digits and validate length
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length < 7) {
+    alert("Phone number must contain at least 7 digits.");
+    return;
+  }
+
+  if (zip && zip.length > 6) {
+    alert("ZIP code must be at most 6 characters.");
     return;
   }
 
@@ -83,8 +153,9 @@ function submitOrder(event) {
   updateCartDisplay();
 }
 
-
+// wire UI after DOM ready
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("script.js loaded");
 
   document.querySelectorAll(".add-to-cart").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -110,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("checkout-btn")?.addEventListener("click", goToCheckout);
   document.getElementById("order-form")?.addEventListener("submit", submitOrder);
-
 
   updateCartDisplay();
 });
