@@ -1,5 +1,5 @@
 let cart = []; // items dict
-// show a bootstrap toast with message and optional icon
+// toast is a dom for notification messages
 function showToast(message, icon = "✅") {
   const toastEl = document.getElementById("live-toast");
   if (!toastEl) {
@@ -7,7 +7,7 @@ function showToast(message, icon = "✅") {
     return;
   }
 
-  // ensure inner placeholders exist
+// ensuring  placeholders exist
   let msgEl = toastEl.querySelector("#toast-message");
   let iconEl = toastEl.querySelector("#toast-icon");
   if (!msgEl) {
@@ -15,6 +15,8 @@ function showToast(message, icon = "✅") {
     msgEl.id = "toast-message";
     toastEl.querySelector(".toast-body")?.appendChild(msgEl);
   }
+
+  // ensuring icon exixts 
   if (!iconEl) {
     iconEl = document.createElement("span");
     iconEl.id = "toast-icon";
@@ -23,13 +25,13 @@ function showToast(message, icon = "✅") {
   iconEl.textContent = icon;
   msgEl.textContent = message;
 
-  // use getOrCreateInstance for stability and show
+  // use getOrCreateInstance for stability of toast
   const toast = bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000, autohide: true });
   console.log("showToast:", message);
   toast.show();
 }
 
-// check discount eligibility and show one-time toast (delayed slightly so it doesn't clash)
+// check discount eligibility
 let _discountTimeout = null;
 function checkAndShowDiscountToast() {
   const itemCount = cart.reduce((s, it) => s + it.qty, 0);
@@ -44,7 +46,7 @@ function checkAndShowDiscountToast() {
       _discountTimeout = null;
     }, 350);
   } else if (itemCount < 3 && discountNotified) {
-    // allow future notification if user removes items below threshold
+    // allow future notification if items go below 3
     discountNotified = false;
     if (_discountTimeout) { clearTimeout(_discountTimeout); _discountTimeout = null; }
   }
@@ -61,7 +63,7 @@ function addToCart(name, price) {
   checkAndShowDiscountToast();
 }
 
-// update cart UI
+// update cart 
 function updateCartDisplay() {
   const cartList = document.getElementById("cart-list");
   const cartTotal = document.getElementById("cart-total");
@@ -74,6 +76,7 @@ function updateCartDisplay() {
     discountNotified = false;
     return;
   }
+  // find subtotal 
   let subtotal = 0;
   cart.forEach(item => {
     subtotal += item.price * item.qty;
@@ -87,7 +90,7 @@ function updateCartDisplay() {
   // check discount eligibility each time cart updates
   checkAndShowDiscountToast();
 }
-
+// navigation to checkout form 
 function goToCheckout() {
   const prod = document.getElementById("products-section");
   const form = document.getElementById("checkout-form");
@@ -96,6 +99,7 @@ function goToCheckout() {
   window.scrollTo(0, 0);
 }
 
+// submiting order 
 function submitOrder(event) {
   event.preventDefault();
   const name = document.getElementById("buyer-name")?.value.trim() || "";
@@ -104,6 +108,8 @@ function submitOrder(event) {
   const address = document.getElementById("buyer-address")?.value.trim() || "";
   const zip = document.getElementById("buyer-zip")?.value.trim() || "";
 
+
+  // required fields
   if (!name || !email || !phone || !address) {
     alert("Please fill out all required fields.");
     return;
@@ -111,8 +117,8 @@ function submitOrder(event) {
 
   // normalize phone digits and validate length
   const digits = phone.replace(/\D/g, "");
-  if (digits.length < 7) {
-    alert("Phone number must contain at least 7 digits.");
+  if (digits.length != 10) {
+    alert("Phone number must contain exactly 10 digits.");
     return;
   }
 
@@ -120,7 +126,7 @@ function submitOrder(event) {
     alert("ZIP code must be at most 6 characters.");
     return;
   }
-
+// calculating totals
   const subtotal = cart.reduce((s, it) => s + it.price * it.qty, 0);
   const itemCount = cart.reduce((s, it) => s + it.qty, 0);
   const discount = itemCount >= 3 ? subtotal * 0.10 : 0;
@@ -128,9 +134,12 @@ function submitOrder(event) {
   const tax = afterDiscount * 0.05;
   const total = afterDiscount + tax;
 
+  // show checkout form
   document.getElementById("checkout-form")?.classList.add("d-none");
   document.getElementById("confirmation")?.classList.remove("d-none");
 
+
+  // showing order summary 
   const details = document.getElementById("confirmation-details");
   if (!details) return;
   details.innerHTML = `
@@ -153,7 +162,7 @@ function submitOrder(event) {
   updateCartDisplay();
 }
 
-// wire UI after DOM ready
+// discount notification 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("script.js loaded");
 
