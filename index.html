@@ -24,7 +24,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Checkout</a></li>
             </ul>
@@ -37,7 +36,7 @@
         <h3>Your Cart</h3>
         <ul id="cart-list" class="list-group mb-3"></ul>
         <p class="fw-bold">Total: €<span id="cart-total">0.00</span></p>
-        <button id="checkout-btn" class="btn btn-success">Proceed to Checkout</button>
+        <button id="checkout-btn" class="btn btn-success" disabled>Proceed to Checkout</button>
       </div>
 
       <!-- PRODUCTS -->
@@ -71,7 +70,7 @@
 
           <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100">
-              <img src="img/394708-20250213175015.webp" class="card-img-top" alt="Panner">
+              <img src="img/394708-20250213175015.webp" class="card-img-top" alt="Paneer">
               <div class="card-body">
                 <h5 class="card-title">Paneer</h5>
                 <p class="card-text">High quality Amul paneer.</p>
@@ -83,7 +82,7 @@
 
           <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100">
-              <img src="img/71Gj4j0N-NL._AC_SL1500_.jpg" class="card-img-top" alt="Bench">
+              <img src="img/71Gj4j0N-NL._AC_SL1500_.jpg" class="card-img-top" alt="Function bench">
               <div class="card-body">
                 <h5 class="card-title">Function bench</h5>
                 <p class="card-text">Durable adjustable multi-purpose bench.</p>
@@ -107,7 +106,7 @@
 
           <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100">
-              <img src="img/barbell-1500-250_d7bbdbff-ddc0-47d5-a86d-99a56dea4603.jpg" class="card-img-top" alt="Barbell">
+              <img src="img/barbell-1500-250_d7bbdbff-ddc0-47d5-a86d-99a56dea4603.jpg" class="card-img-top" alt="Barbell set">
               <div class="card-body">
                 <h5 class="card-title">Barbell with plates set</h5>
                 <p class="card-text">20kg barbell with plates.</p>
@@ -141,7 +140,7 @@
 
           <div class="col-12 col-sm-6 col-md-4">
             <div class="card h-100">
-              <img src="img/parboiled-basmati-rice.jpeg" class="card-img-top" alt="Rice">
+              <img src="img/parboiled-basmati-rice.jpeg" class="card-img-top" alt="Basmati rice">
               <div class="card-body">
                 <h5 class="card-title">Basmati rice</h5>
                 <p class="fw-bold">€8</p>
@@ -149,21 +148,17 @@
               </div>
             </div>
           </div>
-
-        </div>
-      </div>
-
-
-          <div class="col-12 col-sm-6 col-md-4">
-            <div class="card h-100">
-              <img src="img/parboiled-basmati-rice.jpeg" class="card-img-top" alt="Rice">
-              <div class="card-body">
-                <h5 class="card-title">Basmati rice</h5>
-                <p class="fw-bold">€8</p>
-                <button class="btn btn-primary add-to-cart" data-name="Basmati rice" data-price="8">Add to cart</button>
-              </div>
-            </div>
-          </div>
+           
+           <div class="col-12 col-sm-6 col-md-4">
+             <div class="card h-100">
+               <img src="img/Black_d467d0d6-b786-49cc-94b7-623dc78ed6fd.png.webp" class="card-img-top" alt="merch">
+               <div class="card-body">
+                 <h5 class="card-title">Gym merch</h5>
+                 <p class="fw-bold">€15</p>
+                 <button class="btn btn-primary add-to-cart" data-name="Gym merch" data-price="15">Add to cart</button>
+               </div>
+             </div>
+           </div>
 
         </div>
       </div>
@@ -193,7 +188,7 @@
       <p class="mb-0">© 2025 Charity Donation — Helping Kids Get Fit</p>
     </footer>
 
-    <!-- container -->
+    <!-- container for popup  -->
     <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index:1080;">
       <div id="live-toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">

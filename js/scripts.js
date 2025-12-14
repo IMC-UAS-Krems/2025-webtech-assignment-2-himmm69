@@ -67,6 +67,7 @@ function addToCart(name, price) {
 function updateCartDisplay() {
   const cartList = document.getElementById("cart-list");
   const cartTotal = document.getElementById("cart-total");
+  const checkoutBtn = document.getElementById("checkout-btn");
   if (!cartList || !cartTotal) return;
   cartList.innerHTML = "";
   if (cart.length === 0) {
@@ -74,6 +75,7 @@ function updateCartDisplay() {
     cartTotal.innerText = "0.00";
     // reset discount notification when cart empty
     discountNotified = false;
+    if (checkoutBtn) checkoutBtn.disabled = true; // disable checkout when cart empty
     return;
   }
   // find subtotal 
@@ -87,11 +89,19 @@ function updateCartDisplay() {
   });
   cartTotal.innerText = subtotal.toFixed(2);
 
+  // enable checkout if cart has items if no items then no checkout
+  if (checkoutBtn) checkoutBtn.disabled = false;
+
   // check discount eligibility each time cart updates
   checkAndShowDiscountToast();
 }
-// navigation to checkout form 
+
+// block going to checkout if cart empty
 function goToCheckout() {
+  if (cart.length === 0) {
+    showToast("Your cart is empty — add items before checkout.", "⚠️");
+    return;
+  }
   const prod = document.getElementById("products-section");
   const form = document.getElementById("checkout-form");
   if (prod) prod.classList.add("d-none");

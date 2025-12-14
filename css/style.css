@@ -1,4 +1,4 @@
-/* card styling / border */
+/* card styling  border */
 #products-section .card {
   border: 1px solid #e6e9ee;
   border-radius: 12px;
@@ -14,7 +14,7 @@
   border-color: rgba(13,110,253,0.25); /* soft primary tint */
 }
 
-/* image zoom slightly on hover */
+/* image zoom on hover */
 #products-section .card .card-img-top {
   transition: transform 380ms ease;
   transform-origin: center center;
@@ -28,7 +28,7 @@
   padding: 1rem;
 }
 
-/* Add-to-cart button style + color change on hover */
+/* Add-to-cart button style  */
 .add-to-cart {
   transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease;
   position: relative;
@@ -118,14 +118,14 @@ main.container {
   border: 1px solid rgba(255,255,255,0.03);
 }
 
-/* cards: darker, slightly transparent so background shows through */
+/* cards: darker */
 #products-section .card {
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border: 1px solid rgba(255,255,255,0.06);
   color: inherit;
 }
 
-/* stronger hover pop + glow tuned for dark bg */
+/* glow tuned for dark bg */
 #products-section .card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 22px 50px rgba(3,9,20,0.6), 0 0 18px rgba(13,110,253,0.08);
@@ -187,7 +187,7 @@ footer {
   z-index: 1;
 }
 
-/* small screens - reduce shadows for performance */
+/* small screens */
 @media (max-width: 576px) {
   body::before { background-size: 28px 28px; opacity: 0.02; }
   main.container { padding: 1rem; }
